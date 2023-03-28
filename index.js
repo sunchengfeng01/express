@@ -1,23 +1,21 @@
 const express = require('express')
 const { createProxyMiddleware } = require('http-proxy-middleware')
-
+import { Configuration, OpenAIApi } from 'openai'
 const app = express()
 
 // 将请求 /api 转发到 https://example.com/api
-app.use(
-  '/api',
-  createProxyMiddleware({
-    target: 'https://api.openai.com/v1/chat/completions',
-    changeOrigin: true,
-    pathRewrite: {
-      '^/api': ''
-    }
+
+app.post('/', async (req, res) => {
+  const configuration = new Configuration({
+    apiKey: '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'
   })
-)
-app.get('/home', (req, res) => {
-  res.send('home')
-})
-app.get('/', (req, res) => {
+  const openai = new OpenAIApi(configuration)
+  const completion = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    messages: [{ role: 'system', content: data }]
+  })
+
+  console.log(completion.data.choices[0].message?.content, '   get data ')
   res.send('/')
 })
 
