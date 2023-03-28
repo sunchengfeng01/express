@@ -7,14 +7,14 @@ const app = express()
 app.use(
   '/api',
   createProxyMiddleware({
-    target: 'https://example.com',
+    target: 'https://api.openai.com/v1/chat/completions',
     changeOrigin: true,
     pathRewrite: {
       '^/api': ''
     }
   })
 )
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
   res.send('fagsgsgsgsg')
 })
 
