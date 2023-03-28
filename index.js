@@ -15,7 +15,10 @@ app.use(
   })
 )
 app.get('/home', (req, res) => {
-  res.send('fagsgsgsgsg')
+  res.send('home')
+})
+app.get('/', (req, res) => {
+  res.send('/')
 })
 
 app.listen(3000, () => {
