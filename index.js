@@ -16,6 +16,7 @@ app.post('/', async (req, res) => {
   // })
   // console.log(completion.data.choices[0].message?.content, '   get data ')
   // res.send('completion.data.choices[0].message?.content')
+  console.log('req suceess  log')
   res.send('hello')
 })
 
