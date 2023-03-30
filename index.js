@@ -3,16 +3,13 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const port = 3000
 const { Configuration, OpenAIApi } = require('openai')
-// const axios = require('axios')
-const app = express()
+const cors = require('cors')
 
+const app = express()
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use((req, res, next) => {
-  //实验验证，只需要设置这一个就可以进行get请求
-  res.header('Access-Control-Allow-Origin', '*') //配置8080端口跨域
-  next()
-})
+
 const configuration = new Configuration({
   apiKey: process.env.API_KEY
 })
