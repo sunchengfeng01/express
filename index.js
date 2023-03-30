@@ -14,7 +14,7 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-app.post('/abc', async (req, res) => {
+app.post('/', async (req, res) => {
   console.log(req.body)
   const completion = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
