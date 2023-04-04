@@ -18,7 +18,8 @@ const openai = new OpenAIApi(configuration)
 app.post('/', async (req, res) => {
   const msg = JSON.parse(req.body.body).data
   res.setHeader('Access-Control-Allow-Origin', '*')
-
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
   if (!msg) return res.send({ code: 400, data: '参数不能为空' })
   try {
     const completion = await openai.createChatCompletion({
